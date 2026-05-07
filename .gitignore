@@ -1,0 +1,46 @@
+# Player telemetry — never publish
+anticheat.sqlite
+anticheat.sqlite-journal
+anticheat.sqlite-wal
+anticheat.sqlite-shm
+server/anticheat.sqlite
+
+# Trained model (tied to a specific server's data)
+*.pt
+*.pkl
+server/neural_model.json
+
+# Local secrets
+server/config.php
+.env
+.env.local
+
+# Logs
+*.log
+oxide/logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Misc
+*.tmp
+*.bak
+
+# Local tooling / scratch / agent state — never publish
+tools/
+.claude/
+*.i64
+*.idb
+scratch/
+sandbox/

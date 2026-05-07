@@ -1,0 +1,27 @@
+<?php
+// Copy to config.php and replace placeholders with long random strings.
+// AC_SECRET must match Secret field in the plugin's oxide/config/AIAntiCheat.json.
+// AC_ADMIN_SECRET must differ from AC_SECRET — it gates the dashboard and push-command API.
+
+if (!defined('AC_SECRET')) {
+    $env_secret = getenv('AC_SECRET');
+    define('AC_SECRET', $env_secret !== false && $env_secret !== ''
+        ? $env_secret
+        : 'REPLACE_WITH_LONG_RANDOM_STRING');
+}
+
+if (!defined('AC_ADMIN_SECRET')) {
+    $env_admin = getenv('AC_ADMIN_SECRET');
+    define('AC_ADMIN_SECRET', $env_admin !== false && $env_admin !== ''
+        ? $env_admin
+        : 'REPLACE_WITH_DIFFERENT_LONG_RANDOM_STRING');
+}
+
+if (!defined('AC_ALLOW_LOCAL')) {
+    define('AC_ALLOW_LOCAL', true);
+}
+
+if (AC_SECRET === 'REPLACE_WITH_LONG_RANDOM_STRING' ||
+    AC_ADMIN_SECRET === 'REPLACE_WITH_DIFFERENT_LONG_RANDOM_STRING') {
+    error_log('[AI-AC] WARNING: default placeholder secrets, edit config.php');
+}
